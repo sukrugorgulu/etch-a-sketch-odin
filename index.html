@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #gridContainer {
+            border: 1px solid black;
+            /* width: 960px;
+            height: 960px;
+            display: grid;*/
+            justify-content: center;
+        }
+
+        .pixel {
+            border: 1px solid lightgray;
+            float: left;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="gridContainer">
+        
+    </div>
+    <script>
+        let gridSize = 16;
+        let paintAreaWidth = 480;
+        paintArea = document.getElementById('gridContainer');
+        paintArea.style.width = paintAreaWidth + "px";
+        //console.log("grid-template-columns: \'" + "auto ".repeat(gridSize) + "\'");
+        pixSize = (paintAreaWidth/gridSize)-2;
+        
+        function paintPixel() {
+            //console.log(".");
+            event.target.style.background = "black";
+            // reset the color after a short delay
+            setTimeout(function() {
+                event.target.style.background = "";
+            }, 500);
+        }
+        for(let i=0;i<gridSize*gridSize;i++)
+        {
+            let pixel = document.createElement('div');
+            pixel.classList.add('pixel');
+            //pixel.textContent = i;
+            pixel.style.width = pixSize + "px";
+            pixel.style.height = pixSize + "px";
+            paintArea.appendChild(pixel);
+            pixel.addEventListener("mouseover", paintPixel);
+        }
+/*        for(let row=0;row<gridSize;row++)
+        {
+            let theRowdiv = document.createElement('div');
+            for(let col=0;col<gridSize;col++)
+            {
+                let element = document.createElement('div');
+                element.style =
+            }
+        }*/
+    </script>
+
+</body>
+</html>
